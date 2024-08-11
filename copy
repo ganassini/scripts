@@ -2,29 +2,26 @@
 #
 # More practical way to copy files or command outputs to clipboard
 
-set -xe
-
-if [ $# -ne 2 ]; then
-	if [ $# -eq 1 ]; then
-		if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-			echo "Usage: copy [OPTIONS] [FILE] [COMMAND]"
-			echo ""
-			echo "OPTIONS"
-			echo "	-o \"[COMMAND]\"		--output	copy the output of the command to the clipboard"
-			echo "	-f  [FILE]				--file		copy the file to the clipboard"
-			echo "	-h 						--help		display help menu"
-			exit 0
-		else
-			xclip -selection c < $1
-			exit 0
-		fi
-	fi
+usage() {
 	echo "Usage: copy [OPTIONS] [FILE] [COMMAND]"
 	echo ""
 	echo "OPTIONS"
 	echo "	-o \"[COMMAND]\"		--output	copy the output of the command to the clipboard"
 	echo "	-f  [FILE]				--file		copy the file to the clipboard"
 	echo "	-h 						--help		display help menu"
+}
+
+if [ $# -ne 2 ]; then
+	if [ $# -eq 1 ]; then
+		if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+			usage
+			exit 0
+		else
+			xclip -selection c < $1
+			exit 0
+		fi
+	fi
+	usage
 	exit 0
 fi
 if [ "$1" = "-f" ]  || [ "$1" = "--file" ]; then 
