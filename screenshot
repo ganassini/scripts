@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Screenshot to a file and to clipboard simultaneously
+
+SCREENSHOT_FILE_NAME=$HOME"/pictures/screenshots/%Y-%m-%d-%T-screenshot.png"
+
+scrot $SCREENSHOT_FILE_NAME --select
+xclip -selection clipboard -t image/png -i $SCREENSHOT_FILE_NAME

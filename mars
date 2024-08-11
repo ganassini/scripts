@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Start MIPS Assembler (useful for dmenu)
+
+java -jar $HOME/AUR/mars-mips/Mars4_5.jar

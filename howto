@@ -2,7 +2,7 @@
 #
 # Search instructions in a file that contains instructions. 
 
-. ./config
+. $HOME/scripts/config
 
 if [ $# -ne 1 ]; then
     echo "Usage: $0 \"pattern\""

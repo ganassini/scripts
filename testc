@@ -2,7 +2,7 @@
 #
 # Creates a standard C file
 
-. ./config
+. $HOME/scripts/config
 
 FOO_FILE=$(pwd)/foo.c
 FOO_BIN_FILE=$(pwd)/foo

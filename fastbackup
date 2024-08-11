@@ -2,6 +2,8 @@
 #
 # Fast backup
 
+. $HOME/scripts/config
+
 DATE="$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)"
 
 mkdir -p $BACKUP_DIR

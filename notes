@@ -2,7 +2,7 @@
 #
 # Opens my notes file (useful for dmenu)
 
-. ./config
+. $HOME/scripts/config
 
 if pstree -s $$ | grep -q xinit; then
 	nvim -u $INIT_VIM_DIR $NOTES_DIR
