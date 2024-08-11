@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# I don't know if there is a better way to do this (there is)
+#
+# https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication
+
+. ./config
+
+if ! command -v xdotool >/dev/null 2>&1; then
+    echo "xdotool is not installed."
+    exit 1
+fi
+
+LINE_1=$(sed -n '1p' "$TOKEN_DIR") 
+LINE_2=$(sed -n '2p' "$TOKEN_DIR")
+
+if echo "$LINE_1" | grep -q '^#'; then 
+    TOKEN=$LINE_2
+else
+    TOKEN=$LINE_1 
+fi
+
+press_keys() {
+    LEN=${#TOKEN}
+    I=-1
+    while [ $I -lt $LEN ]; do
+        CHAR=$(echo "$TOKEN" | cut -c $((I + 1)))
+        if [ "$CHAR" = "_" ]; then
+            xdotool key underscore
+            sleep 0.2
+        else
+            xdotool type "$CHAR"
+            sleep 0.2
+        fi
+        I=$((I + 1))
+    done
+    sleep 0.3
+    xdotool key Return
+}
+
+press_keys
+

@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Opens my notes file (useful for dmenu)
+
+. ./config
+
+if pstree -s $$ | grep -q xinit; then
+	nvim -u $INIT_VIM_DIR $NOTES_DIR
+else
+	st -e nvim -u $INIT_VIM_DIR $NOTES_DIR
+fi

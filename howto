@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# Search instructions in a file that contains instructions. 
+
+. ./config
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 \"pattern\""
+    exit 1
+fi
+PATTERN=$1
+if [ ! -f "$HOWTO_FILE" ]; then
+    echo "File $HOWTO_FILE not found!"
+    exit 1
+fi
+FOUND_PATTERN=false
+MINUS_COUNT=0
+PRINT_LINES=false
+while IFS= read -r LINE || [[ -n "$LINE" ]]; do
+    if [[ "$LINE" == \#*"$PATTERN"* ]]; then
+        FOUND_PATTERN=true
+        PRINT_LINES=true
+		echo "$LINE"
+        continue
+    fi
+    if [[ "$PRINT_LINES" == true ]]; then
+        echo "$LINE"
+        if [[ "$LINE" == "$(printf '%.0s-' {1..107})" ]]; then
+            MINUS_COUNT=$((MINUS_COUNT + 1))
+            if [[ $MINUS_COUNT -ge 2 ]]; then
+                break
+            fi
+        fi
+    fi
+
+done < "$HOWTO_FILE"

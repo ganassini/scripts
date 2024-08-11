@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Creates a standard C file
+
+. ./config
+
+FOO_FILE=$(pwd)/foo.c
+FOO_BIN_FILE=$(pwd)/foo
+
+if [ -f "$FOO_FILE" ]; then
+    rm "$FOO_FILE"
+fi
+if [ -f "$FOO_BIN_FILE" ]; then 
+    rm "$FOO_BIN_FILE"
+fi
+
+cp $STD_C_FILE_DIR "$FOO_FILE"
+BEFORE=$(stat -c %Y "$FOO_FILE")
+nvim -u $INIT_VIM_DIR "$FOO_FILE"
+AFTER=$(stat -c %Y "$FOO_FILE")
+
+if [ "$BEFORE" -lt "$AFTER" ]; then
+    gcc foo.c -o foo
+else
+    rm "$FOO_FILE"
+fi
+

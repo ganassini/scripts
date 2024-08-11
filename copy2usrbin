@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Copy scripts to /usr/bin
+
+. ./config
+
+for f in ${SCRIPTS[@]}; do
+	sudo cp -v $SCRIPTS_DIR/$f /usr/bin/
+done
+

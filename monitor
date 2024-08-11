@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# I just can't remember --on is called --auto in xrandr
+
+if [ "$#" -eq 0 ]; then
+	xrandr --listmonitors
+	exit 0
+fi
+if [ "$#" -eq 2 ]; then
+	if [ $2 = "off" ]; then 
+		xrandr --output $1 --$2
+		exit 0
+	fi
+	if [ $1 = "HDMI-0" ]; then
+		xrandr --output $1 --auto 
+		xrandr --output DP-0 --right-of $1
+		exit 0
+	fi
+		xrandr --output $1 --auto
+		xrandr --output HDMI-0 --left-of $1
+		exit 0
+fi
+echo ""
+echo "Usage:	monitor DP-0 off"
+echo "	monitor HDMI-0 on"
+echo ""
