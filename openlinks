@@ -16,10 +16,14 @@ def openLinksInFirefox(file_path):
         print(f"File '{file_path}' not found.")
 
 
+def usage():
+    print("\nUSAGE:\n")
+    print("openlinks /path/to/file\n")
+
+
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("\nUSAGE:\n")
-        print("openlinks /path/to/file\n")
+        usage()
         exit()
     openLinksInFirefox(sys.argv[1])
 

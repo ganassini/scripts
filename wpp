@@ -4,6 +4,15 @@
 
 . ./config
 
+usage() {
+	echo " "
+	echo "Unknown option"
+	echo " "
+	echo "  -l               list wallpapers"
+	echo "  -s [FILE]        set [FILE] as wallpaper"
+	echo "  -lf              open wallpapers in lf"
+}
+
 if [ "$1" = "-l" ]; then
 	ls $WPP_DIR
 elif [ "$1" = "-s" ]; then
@@ -14,20 +23,11 @@ elif [ "$1" = "-s" ]; then
 	if [ -f $PIC_PATH.png ]; then
 		feh --bg-scale $PIC_PATH.png
 	else
-		echo " "
-		echo "Unknown option"
-		echo " "
-		echo "  -l               list wallpapers"
-		echo "  -s [FILE]        set [FILE] as wallpaper"
-		echo "  -lf              open wallpapers in lf"
+		usage
 		exit 1
 	fi
 elif [ "$1" = "-lf" ]; then
 	lf $WPP_DIR
 else
-	echo "Unknown option"
-	echo " "
-	echo "  -l               list wallpapers"
-	echo "  -s [FILE]        set [FILE] as wallpaper"
-	echo "  -lf              open wallpapers in lf"
+	usage
 fi
