@@ -5,6 +5,7 @@
 . $HOME/scripts/config
 
 DATE="$(date +%Y)-$(date +%m)-$(date +%d)-$(date +%H)-$(date +%M)"
+BACKUP_DIR=$HOME"/backup"$DATE
 
 mkdir -p $BACKUP_DIR
 mkdir -p $BACKUP_DIR/suckless
@@ -16,6 +17,6 @@ for f in ${FILES[@]}; do
 done
 
 for d in ${DIRS[@]}; do
-	cp -v -r $HOME/$f $BACKUP_DIR
+	cp -v -r $HOME/$d $BACKUP_DIR
 done
 
