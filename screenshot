@@ -4,5 +4,4 @@
 
 SCREENSHOT_FILE_NAME=$HOME"/pictures/screenshots/%Y-%m-%d-%T-screenshot.png"
 
-scrot $SCREENSHOT_FILE_NAME --select
-xclip -selection clipboard -t image/png -i $SCREENSHOT_FILE_NAME
+scrot $SCREENSHOT_FILE_NAME --select && xclip -selection clipboard -t image/png -i $SCREENSHOT_FILE_NAME
