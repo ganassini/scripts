@@ -27,15 +27,14 @@ press_keys() {
         CHAR=$(echo "$TOKEN" | cut -c $((I + 1)))
         if [ "$CHAR" = "_" ]; then
             xdotool key underscore
-            sleep 0.2
         else
             xdotool type "$CHAR"
-            sleep 0.2
         fi
         I=$((I + 1))
     done
     xdotool key Return
 }
 
+sleep 1
 press_keys
 

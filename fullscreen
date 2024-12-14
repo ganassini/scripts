@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Easy way to set a client fullscreen in dwm
+
+xdotool key alt+p
+xdotool key alt+f
