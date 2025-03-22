@@ -10,7 +10,7 @@ usage() {
 	echo " "
 	echo "  -l               list wallpapers"
 	echo "  -s [FILE]        set [FILE] as wallpaper"
-	echo "  -lf              open wallpapers in lf"
+	echo "  -f               open wallpapers in feh"
 }
 
 if [ "$1" = "-l" ]; then
@@ -26,8 +26,8 @@ elif [ "$1" = "-s" ]; then
 		usage
 		exit 1
 	fi
-elif [ "$1" = "-lf" ]; then
-	lf $WPP_DIR
+elif [ "$1" = "-f" ]; then
+	feh --scale-down -g 1914x1045 $WPP_DIR
 else
 	usage
 fi
