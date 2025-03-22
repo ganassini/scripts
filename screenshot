@@ -1,8 +1,7 @@
 #!/bin/sh
 #
-# Screenshot to a file and to clipboard simultaneously
+# Screenshot to a file and to clipboard simultaneously (useful for dwm keybinds)
 
 SCREENSHOT_FILE_NAME=$HOME"/pictures/screenshots/%Y-%m-%d-%T-screenshot.png"
 
-scrot $SCREENSHOT_FILE_NAME --select
-xclip -selection clipboard -t image/png -i $SCREENSHOT_FILE_NAME
+scrot $SCREENSHOT_FILE_NAME --select -e 'xclip -selection clipboard -target image/png -i $f'
