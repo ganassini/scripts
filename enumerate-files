@@ -1,0 +1,8 @@
+#!/bin/sh
+# 
+# TODO Rename all files to an enumerated sequence
+
+if [[ "$#" -lt 1 ]]; then
+fi
+
+ls | cat -n | while read n f; do mv "$f" `printf "%03d.extension" $n`; done
