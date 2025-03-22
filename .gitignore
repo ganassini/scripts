@@ -2,7 +2,5 @@
 
 /chbright
 /nv-run
-/readpdf
-/uptime
-/mvpic
-/howtoc
+
+*.txt
