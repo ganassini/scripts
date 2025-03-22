@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Open the last screenshot taken in feh
+
+SCREENSHOTS_DIR=$HOME/pictures/screenshots
+
+screenshot=$(ls -t $SCREENSHOTS_DIR | head -n 1)
+
+feh $SCREENSHOTS_DIR/$screenshot
