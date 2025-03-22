@@ -2,19 +2,19 @@
 #
 # Prints current connected bluetooth device name and battery on stdout, statusbar etc
 
-CONNECTED=$(bluetoothctl info | grep "Connected: yes")
-if [ -z "$CONNECTED" ]; then
+connected=$(bluetoothctl info | grep "Connected: yes")
+if [ -z "$connected" ]; then
 	echo ""
 	exit 0
 fi
 
-INFO=$(bluetoothctl info)
+info=$(bluetoothctl info)
 
-DEVICE_NAME=$(echo "$INFO" | sed -n 's/.*Name: \(.*\)/\1/p')
+device_name=$(echo "$INFO" | sed -n 's/.*Name: \(.*\)/\1/p')
 
-BATTERY=$(echo "$INFO" | sed -n 's/.*Battery Percentage: 0x[0-9A-Fa-f]* (\([0-9]*\)).*/\1/p')
+battery=$(echo "$INFO" | sed -n 's/.*Battery Percentage: 0x[0-9A-Fa-f]* (\([0-9]*\)).*/\1/p')
 
-if [ -n "$DEVICE_NAME" ] && [ -n "$BATTERY" ]; then
-  echo "󰂯 ${DEVICE_NAME} ${BATTERY}%"
+if [ -n "$device_name" ] && [ -n "$battery" ]; then
+  echo "󰂯 ${device_name} ${battery}%"
 fi
 

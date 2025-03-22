@@ -8,26 +8,26 @@ if [ $# -ne 1 ]; then
     echo "Usage: $0 \"pattern\""
     exit 1
 fi
-PATTERN=$1
+pattern=$1
 if [ ! -f "$HOWTO_FILE" ]; then
     echo "File $HOWTO_FILE not found!"
     exit 1
 fi
-FOUND_PATTERN=false
-MINUS_COUNT=0
-PRINT_LINES=false
-while IFS= read -r LINE || [[ -n "$LINE" ]]; do
-    if [[ "$LINE" == \#*"$PATTERN"* ]]; then
-        FOUND_PATTERN=true
-        PRINT_LINES=true
-		echo "$LINE"
+found_pattern=false
+minus_count=0
+print_lines=false
+while IFS= read -r line || [[ -n "$line" ]]; do
+    if [[ "$line" == \#*"$pattern"* ]]; then
+        found_pattern=true
+        print_lines=true
+		echo "$line"
         continue
     fi
-    if [[ "$PRINT_LINES" == true ]]; then
-        echo "$LINE"
-        if [[ "$LINE" == "$(printf '%.0s-' {1..107})" ]]; then
-            MINUS_COUNT=$((MINUS_COUNT + 1))
-            if [[ $MINUS_COUNT -ge 2 ]]; then
+    if [[ "$print_lines" == true ]]; then
+        echo "$line"
+        if [[ "$line" == "$(printf '%.0s-' {1..107})" ]]; then
+            minus_count=$((minus_count + 1))
+            if [[ $minus_count -ge 2 ]]; then
                 break
             fi
         fi
