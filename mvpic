@@ -16,11 +16,7 @@ if [ $# -ne 1 ];then
 	usage
 	exit 1
 else
-	if [ -d "$1" ];then
-		screenshot=$(ls -t $SCREENSHOTS_DIR | head -n 1)
-		mv $SCREENSHOTS_DIR/$screenshot $1
-	else
-		echo "$1 is not a directory."
-		exit 1
-	fi
+	# TODO improve "if directory exists" logic to accept renaming the file
+	screenshot=$(ls -t $SCREENSHOTS_DIR | head -n 1)
+	mv $SCREENSHOTS_DIR/$screenshot $1
 fi
