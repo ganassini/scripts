@@ -29,15 +29,15 @@ int main(int argc, char** argv) {
     pclose(file);
 
     if ( strcmp(argv[1], "-d") == 0 ) {
-        sprintf(cmd, "xrandr --output DP-0 --brightness %.2f", brightness - 0.1);
+		sprintf(cmd, "xrandr --output DP-0 --brightness %.2f", brightness - 0.05);
         system(cmd);
-        sprintf(cmd, "xrandr --output HDMI-0 --brightness %.2f", brightness - 0.1);
+        sprintf(cmd, "xrandr --output HDMI-0 --brightness %.2f", brightness - 0.05);
         system(cmd);
         return 0;
     }
     
     if ( strcmp(argv[1], "-i") == 0 ) {
-        sprintf(cmd, "xrandr --output DP-0 --brightness %.2f", brightness + 0.05);
+		sprintf(cmd, "xrandr --output DP-0 --brightness %.2f", brightness + 0.05);
         system(cmd);
         sprintf(cmd, "xrandr --output HDMI-0 --brightness %.2f", brightness + 0.05);
         system(cmd);
@@ -45,8 +45,8 @@ int main(int argc, char** argv) {
     }
 
 	if ( strcmp(argv[1], "-k") == 0 ) {
-        system("xrandr --output DP-0 --brightness 1");
         system("xrandr --output HDMI-0 --brightness 1");
+        system("xrandr --output DP-0 --brightness 1");
         return 0;
     }
 
