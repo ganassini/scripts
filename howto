@@ -4,11 +4,11 @@
 
 . $HOME/scripts/config
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 \"pattern\""
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <pattern>"
     exit 1
 fi
-pattern=$1
+pattern=$@
 if [ ! -f "$HOWTO_FILE" ]; then
     echo "File $HOWTO_FILE not found!"
     exit 1

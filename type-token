@@ -35,6 +35,6 @@ press_keys() {
     xdotool key Return
 }
 
-sleep 1
+sleep 0.2
 press_keys
 
