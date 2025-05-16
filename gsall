@@ -12,7 +12,7 @@ for d in ${DIRECTORIES[@]}; do
 	status=`git status | grep nothing`
 	if [ "$status" = "" ];then
 		echo -n $(tput setaf 124) 
-		git status | grep -E 'modified|deleted'
+		git status | grep -E 'modified|deleted|Untracked'
 		echo -n $(tput sgr0)
 	else 
 		echo $status
