@@ -1,0 +1,33 @@
+#!/bin/sh
+# 
+# Opens a PDF file in current dir in atril
+
+num_pdfs=$(ls -l | grep -E .pdf | wc -l)
+
+if [ "$num_pdfs" = "1" ];then
+	book=$(ls -l | grep .pdf | awk '{ print $9 }')
+
+	if [ -f "./.page" ];then
+		atril -p $(cat ./.page) $book &
+	else
+		atril $book &
+	fi
+else
+	if [ "$#" = "1" ];then
+		if [ -f "$1" ];then
+			book=$(ls -l | grep $1 | awk '{ print $9 }')
+			if [ -f "./.page" ];then
+				atril -p $(cat ./.page) $book &
+			else
+				atril $book &
+			fi
+		else
+			echo "'$1' file not found."
+			exit 1
+		fi
+	else
+		echo "there is more than one pdf in this directory, please specify"
+		echo "Usage: readpdf [file.pdf]"
+		exit 1
+	fi
+fi
