@@ -7,5 +7,5 @@
 if pstree -s $$ | grep -q xinit; then
 	nvim -u $INIT_VIM_DIR $NOTES_DIR
 else
-	st -e nvim -u $INIT_VIM_DIR $NOTES_DIR
+	st -g 120x30-450-250-e nvim -u $INIT_VIM_DIR $NOTES_DIR
 fi
