@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Good for launching st in different monitors
+
+currmon=$(cat /tmp/currmon)
+
+if [ "$currmon" = "0" ];then
+	exec st -g 120x30+200-250
+else
+	exec st -g 120x30-450-250
+fi
+
